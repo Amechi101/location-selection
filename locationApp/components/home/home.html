@@ -1,0 +1,49 @@
+<div class="location-main">
+<div class="location-heading">
+	<div class="location-left">
+		<h1>Select Locations</h1>
+		<div class="ui icon input">
+		 	<input id="location-input" class="form-control form-custom" type="text" placeholder="Search" data-ng-model="locationAll">
+		  	<i class="search icon"></i>
+		</div>
+		<div class="selections">
+			<a href="javascript:void(0);">Show Selected ({{home.selectedLocations().length}})</a>
+			<a href="javascript:void(0);" data-ng-click="home.selectAll();">Select All</a> /
+			<a href="javascript:void(0);" data-ng-click="home.deselectAll();">Deselect All</a>
+		</div>
+	</div>
+	
+	<div class="location-right">
+		<button type="button" class="btn btn-danger">Cancel</button>
+		<button type="button" class="btn btn-primary">Add</button>
+	</div>
+</div>
+
+<div class="container-fluid">
+	<div class="row">
+	  	<div class="col-md-6">
+			<table class="table table-striped" data-ng-repeat="(key, value) in home.locationsOnPage | filter:locationAll | groupBy: 'state'">
+				<thead>
+			        <tr>
+			            <th>{{key}}</th>
+			        </tr>
+		    	</thead>
+		    	<tbody>
+			        <tr data-ng-repeat="info in value">
+			            <td>
+			            	<input google-maps-selection type="checkbox" 
+    						value="{{info.id}}"
+    						ng-checked="info.checked"
+    						ng-model="info.checked" />
+    						{{info.address}} <br><span>{{info.city}},{{info.state}}</span> 
+    					</td>
+			        </tr>
+			    </tbody>
+			</table>
+	  	</div>
+	  		<div class="col-md-6" id="map-canvas"></div>
+	</div>
+	
+</div>
+</div>
+
