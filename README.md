@@ -25,12 +25,12 @@ Your challenge is to implement this UI
 **Features required (in order of priority):**
 
 All locations are displayed in the dialog
-~~Locations grouped by state~~
-~~Search filters locations based on all fields~~
-~~Select All/Deselect All function as expected~~
-~~Show the users current location on page~~
+- ~~Locations grouped by state~~
+- ~~Search filters locations based on all fields~~
+- ~~Select All/Deselect All function as expected~~
+- ~~Show the users current location on page~~
 - Clicking "Add" Button displays ids and names of selected locations on page
-~~# of selected locations displayed~~
+- ~~# of selected locations displayed~~
 - Dialog works as a pop up and hosted in page
 - Select All works for a state
 - Ability to expand UI to be 2 columns of states plus the map
