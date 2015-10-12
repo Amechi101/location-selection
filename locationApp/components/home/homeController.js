@@ -17,20 +17,20 @@ function HomeController( LocationData, $cookies, $filter, $scope ) {
 		Display Data on page
 		***/
 		home.locationsOnPage = data;
-		
-		console.log(home.locationsOnPage);
 
+		
 		/***
 		Logic for universal select/deselect
 		***/
-		home.isAll = false;				
-    	
+		home.isAll = false;	
+	
     	//Select All
     	home.selectAll = function() {
             if(home.isAll === false) {
 	    		angular.forEach(home.locationsOnPage, function(location){
 	    			console.log(location)
 	             	location.checked = true;
+	             	
 	    		});
         		
         		home.isAll = true;	
@@ -41,6 +41,7 @@ function HomeController( LocationData, $cookies, $filter, $scope ) {
     	home.deselectAll = function() {
             angular.forEach(home.locationsOnPage, function(location){
              	location.checked = false;
+             	home.maps = false;
     		});
 	        
 	        home.isAll = false;	
@@ -90,23 +91,28 @@ function HomeController( LocationData, $cookies, $filter, $scope ) {
 
 			    //position coordinates for all stores
 			    storePositions = new google.maps.LatLng(storesObj.latitude, storesObj.longitude);
-			    
-			    //load all markers to the page initially
-			    allMarkers = new google.maps.Marker({
-			        position: storePositions,
-			        map: map,
-			        title: storesObj.name
-			    });
 
-			    StoreNameCallback(allMarkers, storesObj.name);
+			    //Loading markers onto the map
+			    LoadMarkers(storePositions, storesObj.name);
+			 
+			    //Adding store names to pop-up description
+			    LoadStoreNames(allMarkers, storesObj.name);
 			};
 	    }
 
-	    function StoreNameCallback(markerInfo, name) {
-	        google.maps.event.addListener(markerInfo, 'click', function() {
-	            infowindow.setContent(name);
+	    function LoadStoreNames(marker, storeNames) {
+	        google.maps.event.addListener(marker, 'click', function() {
+	            infowindow.setContent(storeNames);
 	            infowindow.open(map, this);
 	        });
+	    }
+
+	    function LoadMarkers(positions, storeNames) {
+		    allMarkers = new google.maps.Marker({
+		        position: positions,
+		        map: map,
+		        title:storeNames
+		    });
 	    }
 
 	    navigator.geolocation.getCurrentPosition(initialize); 
