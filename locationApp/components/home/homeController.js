@@ -2,12 +2,41 @@
 
 angular.module('locationApp').controller( 'HomeController', HomeController );
 
-HomeController.$inject = ['LocationData', '$cookies', '$filter', '$scope'];
+HomeController.$inject = ['LocationData', '$cookies', '$filter', '$route'];
 
-function HomeController( LocationData, $cookies, $filter, $scope ) {
+function HomeController( LocationData, $cookies, $filter, $route ) {
 	
 	var home = this;
 
+	home.reloadRoute = reloadRoute;
+	home.switchView = switchView;
+
+	//Default UI View
+	home.view = 'locationApp/components/home/partials/default.html';
+
+	//view for different UI
+	home.views = [
+		{
+            name: '4 Col',
+            template: 'locationApp/components/home/partials/4-col.html',
+            icon: 'btn btn-default navbar-btn glyphicon glyphicon-th'
+        },
+        {
+            name: 'List',
+            template: 'locationApp/components/home/partials/list.html',
+            icon: 'btn btn-default navbar-btn glyphicon glyphicon-th-list'
+     	}
+    ];
+
+
+    function reloadRoute() {
+        $route.reload();
+	}
+            
+    function switchView(view) {
+        home.view = view.template;
+    }
+        
 
 	LocationData.getLocations().then(function( locations ) {
 
@@ -28,7 +57,6 @@ function HomeController( LocationData, $cookies, $filter, $scope ) {
     	home.selectAll = function() {
             if(home.isAll === false) {
 	    		angular.forEach(home.locationsOnPage, function(location){
-	    			console.log(location)
 	             	location.checked = true;
 	             	
 	    		});
@@ -41,7 +69,6 @@ function HomeController( LocationData, $cookies, $filter, $scope ) {
     	home.deselectAll = function() {
             angular.forEach(home.locationsOnPage, function(location){
              	location.checked = false;
-             	home.maps = false;
     		});
 	        
 	        home.isAll = false;	
@@ -118,7 +145,6 @@ function HomeController( LocationData, $cookies, $filter, $scope ) {
 	    navigator.geolocation.getCurrentPosition(initialize); 
 	});
  
-
 	return home;
 }
 

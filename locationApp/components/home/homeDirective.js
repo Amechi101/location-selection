@@ -1,6 +1,7 @@
 "use strict";
 
 angular.module('locationApp').directive( 'googleMapsSelection', googleMapsSelection );
+angular.module('locationApp').directive( 'uiView', uiView );
 
 //directive to watch for change on the list to update map
 function googleMapsSelection() {
@@ -18,3 +19,13 @@ function googleMapsSelection() {
         }
     };
 }
+
+function uiView() {
+    return {
+        scope: true,
+        restrict: 'A',
+        templateUrl:  'locationApp/components/home/partials/homeUISwitch.html',
+        controller:"HomeController"     
+    }
+}
+

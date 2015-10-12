@@ -20,6 +20,10 @@ body {
     background: #ffffff;
 }
 
+a {
+    color:#000;
+}
+
 /* ==============================
    Heading
    ============================== */
@@ -28,28 +32,44 @@ body {
     position:relative;
 }
 
-/*left side*/
-.location-main .location-left {
-}
-
-.location-main .location-left .selections {
-    
-}
-
 /*right side*/
 .location-main .location-right {
     float: right;
 }
 
 /* ==============================
+   Main section
+   ============================== */
+
+.container-fluid {
+    margin-top:100px
+}
+
+/* ==============================
    Locations
    ============================== */
-.table {
+
+/* default */
+.container-fluid .table {
     float:left;
     width:50%;
     border-right:1px solid #333
 }
 
+
+/* 4 column */
+.container-fluid .col-4 {
+    width: 24% !important;
+}
+
+.container-fluid .width-table {
+    width:99.333333% !important;
+}
+
+/* list */
+.container-fluid .table-full {
+    width:100% !important;
+}
 
 /* ==============================
    Map

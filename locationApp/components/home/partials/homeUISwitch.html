@@ -1,0 +1,6 @@
+<div class="container">
+	<ul class="nav navbar-nav navbar-right">
+		<li class="btn btn-default navbar-btn glyphicon glyphicon-picture" ng-click="home.reloadRoute();">Default</li>
+        <li data-ng-repeat="v in home.views" data-ng-bind="v.name" data-ng-class="v.icon" ng-click="home.switchView(v);"></li>
+    </ul>
+</div>

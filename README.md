@@ -33,9 +33,9 @@ All locations are displayed in the dialog
 - ~~# of selected locations displayed~~
 - Dialog works as a pop up and hosted in page
 - Select All works for a state
-- Ability to expand UI to be 2 columns of states plus the map
-- Ability to expand UI to be 4 columns of states without the map
-- Ability to shrink UI to be a single column of states without a map
+- ~~Ability to expand UI to be 2 columns of states plus the map~~
+- ~~Ability to expand UI to be 4 columns of states without the map~~
+- ~~Ability to shrink UI to be a single column of states without a map~~
 - Selected locations display in a map with a red pin
 - Unselected locations display in a map with a grey pin
 - Collapse/expand a state (not shown in design)

@@ -1,0 +1,26 @@
+<div class="container-fluid">
+	<div class="row">
+	  	<div class="col-md-4 width-table">
+			<table class="table col-4 table-striped" data-ng-repeat="(key, value) in home.locationsOnPage | filter:locationAll | groupBy: 'state'">
+				<thead>
+			        <tr>
+			            <th>{{key}} <label>Select All<input type="checkbox" 
+    						value="{{key}}"
+    						ng-model="master"/></label></th>
+			        </tr>
+		    	</thead>
+		    	<tbody>
+			        <tr data-ng-repeat="info in value">
+			            <td>
+			            	<input google-maps-selection type="checkbox" 
+    						value="{{info.state}}"r
+    						ng-checked="info.checked"
+    						ng-model="info.checked" />
+    						{{info.address}} <br><span>{{info.city}},{{info.state}} {{ info.checked}}</span> 
+    					</td>
+			        </tr>
+			    </tbody>
+			</table>
+	  	</div>
+	</div>
+</div>

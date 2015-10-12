@@ -9,5 +9,5 @@ angular.module('locationApp').config(function($routeProvider) {
             templateUrl : 'locationApp/components/home/home.html',
             controller  : 'HomeController',
             controllerAs: 'home'
-        });
+        })
 });
